@@ -272,5 +272,3 @@ class Item:
         for item in list:
             self.append(item)
         
-        return self
-        

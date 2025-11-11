@@ -37,11 +37,6 @@ print(f'fruit has the mango: {fruit.has("mango")}')
 
 myList = ['grape', 'tangerine', 'melon']
 
-fruit.clear()
-
-for x in fruit:
-    print(x)
-
 fruit.fromList(myList)
 
 print(f'fruit after adding myList:')
@@ -54,3 +49,7 @@ print('fruitList:')
 for _ in fruitList:
     print(_)
     
+fruit.clear()
+
+for x in fruit:
+    print(x)
