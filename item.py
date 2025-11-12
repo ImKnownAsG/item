@@ -11,7 +11,7 @@ class Item:
         self._object = obj
     
     def object(self):
-        #helper function to read value - write is protected 
+        #helper function to read value - write is obscured 
         #behind '_method' and '_parameter' naming conventions
         return self._object
     
@@ -55,8 +55,8 @@ class Item:
             newItem = Item(obj)
             newItem._next = first
             first._prev = newItem
-        return newItem 
         #returns the start of the list instead of the end list append
+        return newItem 
         
     def last(self):
         #finds and returns the end of the list
@@ -269,6 +269,8 @@ class Item:
     
     def fromList(self, list):
         #adds items from a python list onto the end of the Item list object
+        print(f'self: {self}')
         for item in list:
             self.append(item)
+    
         
