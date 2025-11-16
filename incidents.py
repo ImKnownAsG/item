@@ -10,23 +10,31 @@ class DayOfWeek:
     _day.append('Sun')
 
     def day():
-        return DayOfWeek.object()
+        return DayOfWeek._day.object()
 
     def yesterday():
-        if DayOfWeek ==  DayOfWeek.first() :
-             DayOfWeek  =  DayOfWeek.last()
+        if DayOfWeek._day ==  DayOfWeek._day.first() :
+             DayOfWeek._day  =  DayOfWeek._day.last()
         else:
-             DayOfWeek  =  DayOfWeek.yesterday() 
-        return  day 
+             DayOfWeek._day  =  DayOfWeek._day.before() 
+        return  DayOfWeek._day 
 
 incident = Item()
 incident.append(173) # made up data for business that averages a couple of incidents per year
 incident.append(214)
 incident.append(187)
 
-for  i  in  incident :
-    for  j  in range( incident.object() ):
-         DayOfWeek = DayOfWeek.yesterday() 
-    print(f'Event happened on { DayOfWeek.day() }')
+totalDays = 0
 
-print(f'Original incident happened on { DayOfWeek.day() }.')
+#for i in incident:
+#    print(f'incident: {incident}')
+    
+for  i  in  incident :
+    print(f'Starting from day {DayOfWeek._day.object()}')
+    totalDays += i
+    #print(f'i: {i}')
+    for  j  in range( i ):
+         DayOfWeek._day = DayOfWeek.yesterday() 
+    print(f'Event happened {i} days ago, on { DayOfWeek._day.object() }')
+
+print(f'Original incident happened {totalDays} ago,  on { DayOfWeek._day.object() }.')

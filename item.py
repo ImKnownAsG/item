@@ -158,29 +158,31 @@ class Item:
     
     def __iter__(self):
         #returns an iterable object (an object with a __next__ method)
-        '''
+        
         head = self.first( )
         head._iter = head
         return head._iter
+        
         '''
         head = self.first()
         head._iter = head
         #creates a self-referential loop to start the iteration
         return head
+        '''
         
     def __next__(self):
         #in this case, self is the iterable object returned by __iter__
         #but it is an instance variable and keeps its parameter values 
         #through each call, allowing the iteration to work
-        '''
+        
         head = self.first( )
         if head._iter == None:
             raise StopIteration
         target = head._iter._object
         head._iter = head._iter._next
         return target
-        '''
         
+        '''
         if self._iter == None:
             #checks if _iter has a value.  The end of a list or an
             #empty list would both be True
@@ -189,6 +191,7 @@ class Item:
         target = self._iter._object
         self._iter = self._iter._next
         return target
+        '''
     
     def count(self):
         #counts the items in the list by first finding the start of the
