@@ -162,14 +162,7 @@ class Item:
         head = self.first( )
         head._iter = head
         return head._iter
-        
-        '''
-        head = self.first()
-        head._iter = head
-        #creates a self-referential loop to start the iteration
-        return head
-        '''
-        
+                
     def __next__(self):
         #in this case, self is the iterable object returned by __iter__
         #but it is an instance variable and keeps its parameter values 
@@ -181,18 +174,7 @@ class Item:
         target = head._iter._object
         head._iter = head._iter._next
         return target
-        
-        '''
-        if self._iter == None:
-            #checks if _iter has a value.  The end of a list or an
-            #empty list would both be True
-            raise StopIteration
-        #if it gets here, return the value and go to the next iterable
-        target = self._iter._object
-        self._iter = self._iter._next
-        return target
-        '''
-    
+            
     def count(self):
         #counts the items in the list by first finding the start of the
         #list and then stepping forward
@@ -213,7 +195,6 @@ class Item:
     
     def at(self, n): 
         #returns the list item at position n
-        print(f'Item.at n: {n}')
         iter = self.first( )
         if iter._object != None:
             count = 0
@@ -277,42 +258,3 @@ class Item:
         for item in list:
             self.append(item)
     
-    def swap(self, swap):
-        for _ in self:
-            print(f'Item.swap self: {_}')
-            
-        iOne = self.at(swap[0])
-        iTwo = self.at(swap[1])
-        
-        thisItem = iOne
-        
-        #iOne should be before iTwo in the list
-        while True:
-            if thisItem._next == iTwo:
-                thisItem = thisItem._next
-                break
-            elif iOne._next == None:
-                break
-            else:
-                thisItem = thisItem._next
-        if thisItem != iTwo:
-            return self
-        
-        iOnePrev = iOne._prev
-        iOneNext = iOne._next
-        iTwoPrev = iTwo._prev
-        iTwoNext = iTwo._next
-        
-        if iOnePrev != None:
-            iOne._prev._next = iTwo
-        if iTwo._next != None:
-            iTwo._next._prev = iOne
-            
-        if iOne._next != iTwo:
-            iOne._next._prev = iTwo
-            iTwo._prev._next = iOne
-        
-        iTwo._prev = iOnePrev
-        iOne._next = iTwoNext
-        
-        
