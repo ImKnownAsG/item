@@ -213,6 +213,7 @@ class Item:
     
     def at(self, n): 
         #returns the list item at position n
+        print(f'Item.at n: {n}')
         iter = self.first( )
         if iter._object != None:
             count = 0
@@ -276,4 +277,42 @@ class Item:
         for item in list:
             self.append(item)
     
+    def swap(self, swap):
+        for _ in self:
+            print(f'Item.swap self: {_}')
+            
+        iOne = self.at(swap[0])
+        iTwo = self.at(swap[1])
+        
+        thisItem = iOne
+        
+        #iOne should be before iTwo in the list
+        while True:
+            if thisItem._next == iTwo:
+                thisItem = thisItem._next
+                break
+            elif iOne._next == None:
+                break
+            else:
+                thisItem = thisItem._next
+        if thisItem != iTwo:
+            return self
+        
+        iOnePrev = iOne._prev
+        iOneNext = iOne._next
+        iTwoPrev = iTwo._prev
+        iTwoNext = iTwo._next
+        
+        if iOnePrev != None:
+            iOne._prev._next = iTwo
+        if iTwo._next != None:
+            iTwo._next._prev = iOne
+            
+        if iOne._next != iTwo:
+            iOne._next._prev = iTwo
+            iTwo._prev._next = iOne
+        
+        iTwo._prev = iOnePrev
+        iOne._next = iTwoNext
+        
         
