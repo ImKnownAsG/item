@@ -120,6 +120,22 @@ class Num:
             denom += 2
         result *= 4
         return result
+    
+    def factI(n):
+        result = 1
+        for _+ in range(1, n + 1):
+            result *= _
+        return result
+    
+    def factR(n):
+        if N < 2:
+            return 1
+        else:
+            return n * factR(n - 1)
+    
+        
+    def fib():
+        
 
 class Complex:
     real = 0

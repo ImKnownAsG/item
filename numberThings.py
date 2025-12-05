@@ -13,6 +13,7 @@ print(f'bin(33): {bin(33)}')
 
 #print(f'bin(3.3): {bit(3.3)}')
 
+'''
 import struct
 
 def float_to_binary(num):
@@ -37,3 +38,4 @@ print(f"The binary representation of {my_float} is  : {binary_repr}")
 my_float_negative = 10.89
 binary_repr_neg = float_to_binary(my_float_negative)
 print(f"The binary representation of {my_float_negative} is: {binary_repr_neg}")
+'''
